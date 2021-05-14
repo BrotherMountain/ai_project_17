@@ -7,7 +7,7 @@ from PyQt5 import QtGui, QtWidgets, QtCore
 from PyQt5.QtCore import QThread, Qt, pyqtSignal, pyqtSlot, QTimer
 from PyQt5.QtGui import QImage, QPixmap
 
-# 
+# 123123
 class Thread(QThread):
     changePixmap = pyqtSignal(QImage)
 
