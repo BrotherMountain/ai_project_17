@@ -1,3 +1,4 @@
+# test
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QCheckBox, QLCDNumber, QGridLayout, QGroupBox, \
     QVBoxLayout, QHBoxLayout, QSlider
