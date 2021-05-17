@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>test</class>
+ <widget class="QMainWindow" name="test">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1072</width>
+    <height>690</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>test</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="camera_line">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>761</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>카메라 연결 화면</string>
+    </property>
+    <widget class="QPushButton" name="camera_on">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>371</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>카메라 연결</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="camera_off">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>20</y>
+       <width>371</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>카메라 끄기</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="camera" native="true">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>50</y>
+       <width>741</width>
+       <height>381</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="waiting_line">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>460</y>
+      <width>281</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>재알림 대기시간</string>
+    </property>
+    <widget class="QWidget" name="verticalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>20</y>
+       <width>261</width>
+       <height>141</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="waiting_vbox">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QLabel" name="mask_waiting">
+          <property name="text">
+           <string>마스크 감지</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="mask_time">
+          <property name="text">
+           <string>00:00</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_6">
+        <item>
+         <widget class="QLabel" name="decibel_waiting">
+          <property name="text">
+           <string>소음 감지</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="decibel_time">
+          <property name="text">
+           <string>00:00</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <widget class="QLabel" name="movement_waiting">
+          <property name="text">
+           <string>마스크 미착욤 감지</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="movement_time">
+          <property name="text">
+           <string>00:00</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="state_line">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>460</y>
+      <width>761</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>상태창</string>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="function_line">
+    <property name="geometry">
+     <rect>
+      <x>780</x>
+      <y>10</y>
+      <width>281</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>세부기능 및 알람간격 설정</string>
+    </property>
+    <widget class="QWidget" name="verticalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>261</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="function_vbox">
+      <item>
+       <widget class="QCheckBox" name="mask_detect">
+        <property name="text">
+         <string>마스크감지</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="mask_hbox">
+        <item>
+         <widget class="QSlider" name="mask_slider">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLCDNumber" name="mask_lcd"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="decibel_detect">
+        <property name="text">
+         <string>소음감지</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="decibel_hbox">
+        <item>
+         <widget class="QSlider" name="decibel_slider">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLCDNumber" name="decibel_lcd"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QCheckBox" name="movement_detect">
+        <property name="text">
+         <string>마스크 미착용 움직임 감지</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="movement_hbox">
+        <item>
+         <widget class="QSlider" name="movement_slider">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLCDNumber" name="movement_lcd"/>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="save_run_button">
+        <property name="text">
+         <string>저장 및 실행</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1072</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menumenu">
+    <property name="title">
+     <string>메뉴</string>
+    </property>
+    <addaction name="actionsavew"/>
+   </widget>
+   <addaction name="menumenu"/>
+  </widget>
+  <action name="actionsavew">
+   <property name="text">
+    <string>test</string>
+   </property>
+   <property name="iconText">
+    <string>test</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
