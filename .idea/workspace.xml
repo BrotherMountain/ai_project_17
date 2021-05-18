@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="715e8d82-aba2-44c7-9303-f54667cff44e" name="디폴트 변경 목록" comment="opencv2설치">
-      <change afterPath="$PROJECT_DIR$/Deep_learning/simply_mask_data_detect.py" afterDir="false" />
+    <list default="true" id="715e8d82-aba2-44c7-9303-f54667cff44e" name="디폴트 변경 목록" comment=".">
+      <change afterPath="$PROJECT_DIR$/Deep_learning/data_training.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Deep_learning/deep_learning_detect.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/ai_project_17.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ai_project_17.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qt_test2.ui" beforeDir="false" afterPath="$PROJECT_DIR$/UI/qt_test2.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qt_window_test2.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/qt_window_test2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/window_test4.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/window_test4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Deep_learning/simply_mask_data_detect.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deep_learning/simply_mask_data_detect.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +33,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../anaconda/python.exe" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -42,7 +41,49 @@
       <recent name="C:\Users\이종원\PycharmProjects\ai_project_17\UI" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.qt_window_test2 (1)">
+  <component name="RunManager" selected="Python.simply_mask_data_detect">
+    <configuration name="data_training" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ai_project_17" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Deep_learning" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Deep_learning/data_training.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="deep_learning_detect" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ai_project_17" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Deep_learning" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Deep_learning/deep_learning_detect.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="qt_window_test2 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ai_project_17" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -108,8 +149,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.qt_window_test2 (1)" />
         <item itemvalue="Python.simply_mask_data_detect" />
+        <item itemvalue="Python.deep_learning_detect" />
+        <item itemvalue="Python.data_training" />
+        <item itemvalue="Python.qt_window_test2 (1)" />
         <item itemvalue="Python.qt_window_test2" />
       </list>
     </recent_temporary>
@@ -130,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621257172260</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary=".">
+      <created>1621265345156</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1621265345156</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +197,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="opencv2설치" />
-    <option name="LAST_COMMIT_MESSAGE" value="opencv2설치" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>

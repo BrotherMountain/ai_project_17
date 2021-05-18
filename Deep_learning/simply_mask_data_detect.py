@@ -1,11 +1,12 @@
-"""
-# 쿠다 필요로 인해서 실행을 못했음
+# import os  #gpu cuda 오류 무시코드
+#
+# os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 import cv2
 import cvlib as cv
 
 # open webcam (웹캠 열기)
-webcam = cv2.VideoCapture(0)
+webcam = cv2.VideoCapture(0, cv2.CAP_DSHOW)
 
 if not webcam.isOpened():
     print("Could not open webcam")
@@ -39,8 +40,8 @@ while webcam.isOpened():
         if sample_num % 8 == 0:
             captured_num = captured_num + 1
             face_in_img = frame[startY:endY, startX:endX, :]
-            cv2.imwrite('./mask/face' + str(captured_num) + '.jpg', face_in_img)  # 마스크 미착용 데이터 수집시 주석처리
-            # cv2.imwrite('./nomask/face'+str(captured_num)+'.jpg', face_in_img) # 마스크 미착용 데이터 수집시 주석해제
+            # cv2.imwrite('./mask/face' + str(captured_num) + '.jpg', face_in_img)  # 마스크 미착용 데이터 수집시 주석처리
+            cv2.imwrite('./nomask/face' + str(captured_num) + '.jpg', face_in_img)  # 마스크 미착용 데이터 수집시 주석해제
 
     # display output
     cv2.imshow("captured frames", frame)
@@ -52,4 +53,3 @@ while webcam.isOpened():
 # release resources
 webcam.release()
 cv2.destroyAllWindows()
-"""
