@@ -17,10 +17,15 @@ model = load_model('model1.h5')
 class Cam_Thread(QThread):
     changePixmap = pyqtSignal(np.ndarray)
 
-    def __init__(self, input_camera_number=0, parent=None):
+    def __init__(self, input_camera_number=0, ip='', parent=None):
         super().__init__(parent)
         self.camera_number = input_camera_number
-        self.cam = cv2.VideoCapture(self.camera_number, cv2.CAP_DSHOW)
+        if(self.camera_number <10):
+            self.cam = cv2.VideoCapture(self.camera_number, cv2.CAP_DSHOW)
+        else:
+            self.url = ip
+            self.cam = cv2.VideoCapture('http://'+self.url+':4747/video')
+      
         if self.cam.isOpened():
             self.connect = True
             self.running = False
