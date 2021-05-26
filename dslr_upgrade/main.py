@@ -58,7 +58,7 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
         self.camera.setPixmap(QPixmap.fromImage(qimg))
 
     def WebCam_activate(self):
-        camera_number = 0
+        camera_number = 0              #후에 외부 웹캠 연결시 -1번으로 설정
         self.CAM = camera_main.Cam_Thread(camera_number)
         if self.CAM.connect:
             print("connect")
@@ -68,11 +68,9 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
             print("not connect")
 
     def phone_activate(self):
-        """
-        print("핸드폰 연결은 아직 미구현")
-        """
-        camera_number = 0           # 카메라 연결 번호
-        self.CAM = camera_main.Cam_Thread(camera_number)
+        camera_number = 10            # 카메라 연결 번호는 str형태이므로 임의로 10번을 주었다.
+        my_ip = '172.18.11.13'        # droidcam앱의 port 번호를 적어주세요. 마지막 4747을 제외하고 적어주세요
+        self.CAM = camera_main.Cam_Thread(camera_number, my_ip)
         if self.CAM.connect:
             print("connect")
             self.CAM.changePixmap.connect(self.setImage)
@@ -95,9 +93,6 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
         self.phone.show()
         self.DSLR.show()
 
-    # def webcam_select(self):
-    #     self.num = 0
-    #     self.camera_online()
 
     def camera_online(self):
         self.webcam.hide()
