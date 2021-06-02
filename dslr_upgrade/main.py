@@ -27,6 +27,7 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
 
         ''' 변수 관련'''
         self.state_txt_path = ''
+        self.cnt_3 = 0 # 주어진 시간동안 음성 출력 1번 제한
 
 
         ''' connect 관련 '''
@@ -113,6 +114,7 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
     """ 저장및 실행버튼을 누를경우 작동 """
 
     def functionSaveAndRun(self):
+        self.cnt_3 = 0
         self.startTimer()
 
         function_status = []
@@ -124,6 +126,8 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
             function_status.append('소음')
         if self.movement_detect.isChecked():
             function_status.append('마스크 미착용 후 이동')
+            self.function3()
+            
         if function_status:
             self.state_function_Label.setText('/'.join(function_status) + ' 감지 활성화')
         else:
@@ -150,13 +154,13 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
         self.myTimer.start(1000)
 
     def timerTimeout(self):
-        if self.start_mask:
-            self.second_1 -= 1
-            if self.second_1 == 0:
-                self.second_1 = 60
-                if self.minute_1 == 0:
-                    self.mask_time.setText("00:00")
-                self.minute_1 -= 1
+        # if self.start_mask:
+        self.second_1 -= 1
+        if self.second_1 == 0:
+            self.second_1 = 60
+            if self.minute_1 == 0:
+                self.mask_time.setText("00:00")
+            self.minute_1 -= 1
 
         self.second_2 -= 1
         if self.second_2 == 0:
@@ -170,10 +174,12 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
             self.second_3 = 60
             if self.minute_3 == 0:
                 self.movement_time.setText("00:00")
+                self.cnt_3 = 0
             self.minute_3 -= 1
 
         if self.minute_1 <= -1 and self.minute_2 <= -1 and self.minute_3 <= -1:
-            self.myTimer.stop()
+            # self.myTimer.stop()
+            self.startTimer()
 
         self.update_gui()
 
@@ -205,8 +211,42 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
     def function2(self, state):
         pass
 
-    def function3(self, state):
-        pass
+    count = 0
+    x = []
+    y = []
+    def function3(self):
+                try:
+            # print("초 단위", self.second_2)
+            if self.CAM.running:
+                self.count += 1
+
+                # 새로운 좌표값을 받기 위해 초기화
+                if self.count == 3:
+                    self.count = 1
+                    self.x.clear()
+                    self.y.clear()
+
+                # print("count", self.count)
+                print("main x, y: ", self.CAM.startX, self.CAM.startY) #좌표값 확인
+                self.x.append(self.CAM.startX)
+                self.y.append(self.CAM.startY)
+
+                # 두 개의 좌표 입력받으면 속도 구함
+                if self.count == 2:
+                    x_2 = (self.x[0] - self.x[1]) * (self.x[0] - self.x[1])
+                    y_2 = (self.y[0] - self.y[1]) * (self.y[0] - self.y[1])
+
+                    dis = math.sqrt(x_2 + y_2)
+                    v = dis  # 프레임을 읽을 때마다 1초씩 걸린다. t=1
+                    print("v: ", v)
+                    if v > 150 and self.cnt_3 == 0:
+                        playsound.playsound("no_run.mp3")
+                        self.cnt_3 += 1
+
+                threading.Timer(1, self.function3).start()
+        except:
+            print("function3 작동 실패")
+            pass
 
     def state_save_select(self):
         forder_path = QFileDialog.getExistingDirectory()
