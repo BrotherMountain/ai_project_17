@@ -215,7 +215,7 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
     x = []
     y = []
     def function3(self):
-                try:
+        try:
             # print("초 단위", self.second_2)
             if self.CAM.running:
                 self.count += 1
