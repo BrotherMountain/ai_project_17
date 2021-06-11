@@ -13,7 +13,6 @@ import threading
 
 import camera_main
 
-
 class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
     def __init__(self):
         QMainWindow.__init__(self, None)
@@ -47,7 +46,6 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
 
         self.state_path_Button.clicked.connect(self.state_save_select)
         self.state_reset_Button.clicked.connect(self.state_reset)
-        self.event_test_button.clicked.connect(self.state_write)
 
     '''
     여기서부터 실행 관련 함수
@@ -123,7 +121,8 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
         function_status = []
         if self.mask_detect.isChecked():
             function_status.append('마스크')
-            self.function1()
+            self.function1_thread.start()
+
         else:
             self.function1_thread.cancel()
 
@@ -134,7 +133,8 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
 
         if self.movement_detect.isChecked():
             function_status.append('마스크 미착용 후 이동')
-            self.function3()
+            self.function1_thread.start()
+
         else:
             self.function3_thread.cancel()
 
@@ -212,9 +212,8 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
                     self.start_mask = False
                 else:
                     print("마스크를 착용하지 않고 있습니다.")
-                    self.state_write('마스크 미착용 감지')
+                    self.state_write('마스크 미착용')
                     self.start_mask = True
-                self.function1_thread.start()
         except:
             print("function1 작동 실패")
             pass
@@ -254,8 +253,6 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
                         playsound.playsound("no_run.mp3")
                         self.state_write('마스크 미착용 후 이동 감지')
                         self.cnt_3 += 1
-
-                self.function3_thread.start()
         except:
             print("function3 작동 실패")
             pass
