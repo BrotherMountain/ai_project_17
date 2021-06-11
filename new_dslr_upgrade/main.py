@@ -28,6 +28,9 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
         ''' 변수 관련'''
         self.state_txt_path = ''
         self.cnt_3 = 0 # 주어진 시간동안 음성 출력 1번 제한
+        self.function1_thread = threading.Timer(1, self.function1)
+        self.function2_thread = threading.Timer(1, self.function2)
+        self.function3_thread = threading.Timer(1, self.function3)
 
 
         ''' connect 관련 '''
@@ -121,12 +124,20 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
         if self.mask_detect.isChecked():
             function_status.append('마스크')
             self.function1()
+        else:
+            self.function1_thread.cancel()
 
         if self.decibel_detect.isChecked():
             function_status.append('소음')
+        else:
+            self.function2_thread.cancel()
+
         if self.movement_detect.isChecked():
             function_status.append('마스크 미착용 후 이동')
             self.function3()
+        else:
+            self.function3_thread.cancel()
+
             
         if function_status:
             self.state_function_Label.setText('/'.join(function_status) + ' 감지 활성화')
@@ -201,9 +212,9 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
                     self.start_mask = False
                 else:
                     print("마스크를 착용하지 않고 있습니다.")
+                    self.state_write('마스크 미착용 후 이동 감지')
                     self.start_mask = True
-
-                threading.Timer(1, self.function1).start()
+                self.function1_thread.start()
         except:
             print("function1 작동 실패")
             pass
@@ -241,9 +252,10 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
                     print("v: ", v)
                     if v > 150 and self.cnt_3 == 0:
                         playsound.playsound("no_run.mp3")
+                        self.state_write('마스크 미착용 후 이동 감지')
                         self.cnt_3 += 1
 
-                threading.Timer(1, self.function3).start()
+                self.function3_thread.start()
         except:
             print("function3 작동 실패")
             pass
@@ -256,15 +268,15 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
     def state_reset(self):
         self.state_plainTextEdit.clear()
 
-    def state_write(self):
+    def state_write(self, event_name):
         now = datetime.datetime.now()
-        self.state_plainTextEdit.appendPlainText(f'<{now.strftime("%Y-%m-%d %H:%M:%S")}> EventName')
+        self.state_plainTextEdit.appendPlainText(f'<{now.strftime("%Y-%m-%d %H:%M:%S")}> {event_name}')
         if self.state_txt_path:
             with open(f'{self.state_txt_path}/{now.strftime("%Y-%m-%d")}.txt', 'at') as state_txt_file:
-                state_txt_file.write(f'<{now.strftime("%Y-%m-%d %H:%M:%S")}> EventName\n')
+                state_txt_file.write(f'<{now.strftime("%Y-%m-%d %H:%M:%S")}> {event_name}\n')
         else:
             with open(f'{now.strftime("%Y-%m-%d")}.txt', 'at') as state_txt_file:
-                state_txt_file.write(f'<{now.strftime("%Y-%m-%d %H:%M:%S")}> EventName\n')
+                state_txt_file.write(f'<{now.strftime("%Y-%m-%d %H:%M:%S")}> {event_name}\n')
 
 
 app = QApplication(sys.argv)
