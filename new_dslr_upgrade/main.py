@@ -212,7 +212,7 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
                     self.start_mask = False
                 else:
                     print("마스크를 착용하지 않고 있습니다.")
-                    self.state_write('마스크 미착용 후 이동 감지')
+                    self.state_write('마스크 미착용 감지')
                     self.start_mask = True
                 self.function1_thread.start()
         except:
