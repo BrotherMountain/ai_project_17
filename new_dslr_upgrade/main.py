@@ -121,7 +121,6 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
         function_status = []
         if self.mask_detect.isChecked():
             function_status.append('마스크')
-            self.function1_thread.start()
 
         else:
             self.function1_thread.cancel()
@@ -133,7 +132,6 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
 
         if self.movement_detect.isChecked():
             function_status.append('마스크 미착용 후 이동')
-            self.function1_thread.start()
 
         else:
             self.function3_thread.cancel()
@@ -217,6 +215,7 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
         except:
             print("function1 작동 실패")
             pass
+        self.function1_thread.start()
 
     def function2(self, state):
         pass
@@ -256,6 +255,8 @@ class MainWindow(QMainWindow, mainUI.Ui_MainWindow):
         except:
             print("function3 작동 실패")
             pass
+        self.function3_thread.start()
+
 
     def state_save_select(self):
         forder_path = QFileDialog.getExistingDirectory()
